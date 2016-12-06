@@ -1,0 +1,123 @@
+/* 
+ * Locker body
+ */ 
+.locker{ 
+	-ms-touch-action: none; 
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	transform: scale(1);
+	transition: all 0.3s ease;
+	opacity: 1;
+	z-index: 4;
+}
+.locker-wrap{
+	position:relative; 
+	cursor:pointer;
+}
+.locker-wrap li {
+	list-style: none;
+	margin:0;
+	padding: 0;
+}
+.locker-item{
+	position:relative;
+	float: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	background-color: rgba(255,255,255,0.1)
+ }
+.locker-item.selected{ background-color: rgba(255,255,255,0.3) }
+.locker-hide .locker-item.selected{ border:0; }
+.locker-point{
+	background: #FFF;
+	width: 16px;height: 16px;
+	border-radius:16px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-8px;
+	margin-left:-8px;
+}
+.locker-line{
+	border-radius:15px;
+	height:5px;
+	background:rgba(255,255,255,.7);
+	position:absolute;
+	transform-origin:2.5px 2.5px;
+}
+.locker-hide .locker-line{ display:none; }
+
+
+/* 
+ * Locker status flag -> error
+ */ 
+@keyframes 			bcirc {  0% { background-color: rgba(255,255,255,0.3); } 20% { background-color: rgba(255,0,0,0.3); }  100% { background-color: rgba(255,255,255,0.1); }}
+@-webkit-keyframes 	bcirc {  0% { background-color: rgba(255,255,255,0.3); } 20% { background-color: rgba(255,0,0,0.3); } 100% { background-color: rgba(255,255,255,0.1); }}
+
+@keyframes 			bline {  0% { background-color: rgba(255,255,255,0.7); } 20% { background-color: rgba(255,0,0,0.3); } 100% { background-color: rgba(255,255,255,0.3); opacity: 0; } }
+@-webkit-keyframes 	bline {  0% { background-color: rgba(255,255,255,0.7); } 20%  { background-color: rgba(255,0,0,0.3); } 100% { background-color: rgba(255,255,255,0.3); opacity: 0;} }
+
+@keyframes 			bdots {  0% { background-color: rgba(255,255,255,1); } 20% { background-color: rgba(255,0,0,1); }  100% { background-color: rgba(255,255,255,1); }}
+@-webkit-keyframes 	bdots {  0% { background-color: rgba(255,255,255,1); } 20% { background-color: rgba(255,0,0,1); } 100% { background-color: rgba(255,255,255,1); }}
+
+.locker-error .locker-item.selected{ 
+	background-color: rgba(255,0,0,0.3) 
+
+	-webkit-animation: bcirc 0.5s linear forwards;
+	-moz-animation: bcirc 0.5s linear forwards;
+	animation: bcirc 0.5s linear forwards;
+}
+.locker-error .locker-line { 
+	background:rgba(255,0,0,0.3);  
+
+	-webkit-animation: bline 1s linear forwards;
+	-moz-animation: bline 1s linear forwards;
+	animation: bline 1s linear forwards;
+}
+.locker-error .selected .locker-point{ 
+	background: rgba(255,0,0,0.9); z-index: 10;
+
+	-webkit-animation: bdots 1s linear forwards;
+	-moz-animation: bdots 1s linear forwards;
+	animation: bdots 1s linear forwards;
+}
+
+/* 
+ * Locker status flag -> success
+ */ 
+@keyframes 			scirc {  0% { background-color: rgba(255,255,255,0.3); } 20% { background-color: rgba(0,255,0,0.3); }  100% { background-color: rgba(255,255,255,0.1); }}
+@-webkit-keyframes 	scirc {  0% { background-color: rgba(255,255,255,0.3); } 20% { background-color: rgba(0,255,0,0.3); } 100% { background-color: rgba(255,255,255,0.1); }}
+
+@keyframes 			sline {  0% { background-color: rgba(255,255,255,0.7); } 20% { background-color: rgba(0,255,0,0.3); } 100% { background-color: rgba(255,255,255,0.3); opacity: 0; } }
+@-webkit-keyframes 	sline {  0% { background-color: rgba(255,255,255,0.7); } 20%  { background-color: rgba(0,255,0,0.3); } 100% { background-color: rgba(255,255,255,0.3); opacity: 0;} }
+
+@keyframes 			sdots {  0% { background-color: rgba(255,255,255,1); } 20% { background-color: rgba(0,255,0,1); }  100% { background-color: rgba(255,255,255,1); }}
+@-webkit-keyframes 	sdots {  0% { background-color: rgba(255,255,255,1); } 20% { background-color: rgba(0,255,0,1); } 100% { background-color: rgba(255,255,255,1); }}
+
+.locker-success .locker-item.selected{ 
+	background-color: rgba(255,0,0,0.3) 
+
+	-webkit-animation: scirc 0.5s linear forwards;
+	-moz-animation: scirc 0.5s linear forwards;
+	animation: scirc 0.5s linear forwards;
+}
+.locker-success .locker-line { 
+	background:rgba(255,0,0,0.3);  
+
+	-webkit-animation: sline 1s linear forwards;
+	-moz-animation: sline 1s linear forwards;
+	animation: sline 1s linear forwards;
+}
+.locker-success .selected .locker-point{ 
+	background: rgba(255,0,0,0.9); z-index: 10;
+
+	-webkit-animation: sdots 1s linear forwards;
+	-moz-animation: sdots 1s linear forwards;
+	animation: sdots 1s linear forwards;
+}
+.locker-success {
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	transform: scale(0.5);
+	opacity: 0;
+}

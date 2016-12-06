@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test</title>
+
+        <!--@TODO: Because of POC, no needs to use 
+            any css preprocessors such as PostCSS/SASS/LESS and so one... -->
+
+        <link type="text/css" rel="stylesheet" href="style/app.css" media="all" />
+        <link type="text/css" rel="stylesheet" href="style/locker.css" media="all" />
+
+        <!--@TODO: Because of POC, 
+            Jquery is using here as simplies way to work with DOM and preset 
+            server Ajax mock, for mockjax.js libruary -->
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.js"></script>
+
+        <!--@TODO: Because of POC, no needs to use any  js loaders here  
+            such as Require.JS and any of AMD/LMD/NODE/ES6 module patterns. 
+            Just for speed up this developnet -->
+        <script type="text/javascript" src="server/config.js"></script>
+        <script type="text/javascript" src="server/requests.js"></script>
+
+        <script type="text/javascript" src="locker/points.js"></script>
+        <script type="text/javascript" src="locker/events.js"></script>
+        <script type="text/javascript" src="locker/controller.js"></script>
+
+        <script type="text/javascript" src="app/view.js"></script>
+        <script type="text/javascript" src="app/controller.js"></script>
+
+    </head>
+<body>
+
+    <!-- Main template -->
+    <div class="screen">
+        <div class="clock"></div>
+        <div class="state"></div>
+        <div class="locker" id="locker"></div>
+        <div class="controls">
+            <button class="change">
+                <svg style="fill: #fff;"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 64 64" xml:space="preserve">
+                    <path d="M32,0C14.327,0,0,14.327,0,32s14.327,32,32,32s32-14.327,32-32S49.673,0,32,0z M32,62C15.432,62,2,48.568,2,32      C2,15.432,15.432,2,32,2c16.568,0,30,13.432,30,30C62,48.568,48.568,62,32,62z"></path></g>
+                    <path d="M43.012,22.307l-6.789-4.033c-0.938-0.557-2.137-0.227-2.678,0.738L26.254,32.35l-0.979,1.746      c-0.319,0.568-0.781,1.278-0.735,2.021L24.012,45c0,0,0.413,2,1.988,2v-0.014c0.283-0.006,0.565-0.064,0.826-0.198l7.306-4.976      c0.647-0.328,1.009-1.099,1.327-1.666l0.98-1.748l0.49-0.873l6.799-12.464C44.271,24.097,43.949,22.863,43.012,22.307z       M37.682,32.152l-2.449,4.365l-0.49,0.873c0,0-0.352,0.625-0.98,1.746c-0.629,1.122-1.966,2.187-2.452,2.432l-3.718,3.011      c-0.44,0.226-0.959,0.207-1.383-0.045s-0.698-0.705-0.729-1.209l0.674-4.818c-0.034-0.555,0.182-2.271,0.817-3.401      c0.635-1.133,1.96-3.494,1.96-3.494l1.96-3.493l1.429-2.661l6.791,4.031L37.682,32.152z M40.042,27.759l-6.792-4.031      l1.992-3.708l6.79,4.033L40.042,27.759z" ></path>
+                </svg>
+            </button>
+            <button class="lock">
+                <svg style="fill: #fff;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 64 64" style="fill: rgb(0, 109, 240);" xml:space="preserve">
+                    <path d="M32,0C14.327,0,0,14.327,0,32s14.327,32,32,32s32-14.327,32-32S49.673,0,32,0z M32,62.001C15.432,62.001,2,48.568,2,32      C2,15.432,15.432,2,32,2c16.568,0,30,13.432,30,30C62,48.568,48.568,62.001,32,62.001z"></path> 
+                    <polygon points="41.191,24.222 39.777,22.808 32,30.586 24.222,22.808 22.808,24.222 30.586,32 22.808,39.777 24.222,41.191       32,33.414 39.777,41.191 41.191,39.777 33.414,32"></polygon>
+                </svg>
+            </button>
+            <a class="tests" target="_blank" href="tests/SpecRunner.html">App unit tests</a>
+        </div>
+    </div>
+
+    <p class="help">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" height="100%" viewBox="0 0 64 64" xml:space="preserve">
+            <path d="M32,0C14.327,0,0,14.327,0,32s14.327,32,32,32s32-14.327,32-32S49.673,0,32,0z M32,62C15.432,62,2,48.568,2,32      C2,15.432,15.432,2,32,2c16.568,0,30,13.432,30,30C62,48.568,48.568,62,32,62z" ></path>
+            <path d="M32,16c-6.075,0-11,4.925-11,11c0,0.341,0.048,0.668,0.079,1H21v9c0,6.075,4.925,11,11,11      c5.736,0,10.443-4.395,10.949-10H43V27C43,20.925,38.075,16,32,16z M32,46c-4.971,0-9-4.029-9-9s4.029-9,9-9      c4.971,0,9,4.029,9,9S36.971,46,32,46z M41,30.688C39.01,27.855,35.725,26,32,26c-3.724,0-7.01,1.855-9,4.688V27      c0-4.971,4.029-9,9-9c4.971,0,9,4.029,9,9V30.688z M32,33c-2.209,0-4,1.791-4,4c0,1.861,1.278,3.412,3,3.857V42      c0,0.553,0.448,1,1,1c0.553,0,1-0.447,1-1v-1.143c1.723-0.445,3-1.996,3-3.857C36,34.791,34.209,33,32,33z M32,39      c-1.104,0-2-0.896-2-2s0.896-2,2-2c1.104,0,2,0.896,2,2S33.104,39,32,39z"></path>
+        </svg> to unlock please enter <span class="help-text"></span><br />
+    </p>
+
+    <!-- Main APP class initialization -->
+    <script type="text/javascript">
+        $(function(){
+            var app = new App();
+            app.initLocker('#locker');
+            app.initView();
+        })
+    </script>
+
+</body></html>

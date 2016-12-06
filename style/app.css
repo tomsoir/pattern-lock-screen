@@ -1,0 +1,175 @@
+/* 
+ * Reset main
+ */ 
+html{
+	display: table; height: 100%; width: 100%;
+} 
+body{ 
+	font-family: 'Roboto','Arial', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+button { 
+	position: absolute; 
+	background: transparent;
+	border: 0; outline: none;
+	border-radius: 50px; bottom: 0;
+	height: 50px; width: 50px; left: 50%; 
+
+	color: #fff;
+	cursor: pointer;
+	z-index: 3;
+	transition: all 0.3s ease;
+}
+button:hover svg{ fill: #f00!important; }
+
+
+/* 
+ * Screen wrap
+ */ 
+.screen{
+	position: relative;
+	display: inline-block;
+	-ms-touch-action: none;
+	min-height: 480px;
+	text-align: center;
+	overflow: hidden;
+	background: #000;
+	margin: 0 auto;
+}
+.screen:after,
+.screen:before{
+	content: ' ';
+	position: absolute; 
+	top:0;left: 0;right: 0;bottom: 0;
+	z-index: 1;
+}
+.screen:before{
+	background: url('https://s-media-cache-ak0.pinimg.com/originals/3e/43/cc/3e43cc1aca188d431858f92623107c71.jpg'); 
+	background-size: cover;
+	opacity: 0.65;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	transform: scale(1);
+	transition: all 0.3s ease;
+}
+.screen:after{
+	background: url('http://www.designbolts.com/wp-content/uploads/2013/03/nature-iphone-5-wallpaper-hd-2.jpg'); 
+	background-size: cover;
+	opacity: 0;
+	-webkit-transform: scale(1.5);
+	-moz-transform: scale(1.5);
+	transform: scale(1.5);
+	transition: all 0.3s ease;
+}
+.screen.show:before{
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	transform: scale(0.5);
+	opacity: 0;
+}
+.screen.show:after{
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	transform: scale(1);
+	opacity: 0.65;
+}
+
+/* 
+ * Clock
+ */ 
+.clock {
+	color: #fff;
+	position: relative;
+	text-align: center;
+	padding: 30px 0 0; 
+	z-index: 3;
+}
+.clock b { font-size: 50px; font-weight: normal; }
+.clock i { display: block; font-style: normal;}
+
+/* 
+ * State prompt
+ */ 
+.state{ 
+	position: relative;
+	color: yellow;
+	text-align: center;
+	font-size: 12px;
+	padding: 10px 0 0;
+	margin-bottom: -30px;
+	z-index: 3;
+}
+
+/* 
+ * Controls
+ */ 
+.lock 	{ margin-left: -70px; }
+.change { margin-left: 20px; }
+.controls{
+	z-index: 5;
+	position: absolute;
+	bottom: -50px;  
+	width: 100%;
+	transition: bottom 0.3s ease;
+}
+.show .controls{ bottom: 20px;}
+
+/* 
+ * Tests link
+ */ 
+.tests{ 
+	position: absolute;
+	height: 48px;
+	width: 50px;
+	left: -80px;
+	top: -300px;
+	background: #653797;
+	font-size: 12px;
+	padding-top: 2px;
+	line-height: 15px;
+	text-decoration: none;
+	color: #fff;
+	border-radius: 8px;
+	word-spacing: 10px;
+	box-shadow: 0px 3px 6px 0px #000;
+	transition: top 0.3s ease;
+	z-index: 1;
+}
+.tests.show {
+	left: 30px;
+	top: -300px;
+	z-index: 6;
+}
+
+/* 
+ * Help
+ */ 
+.help{
+	color: #555;
+	display: block;
+	height: 18px; 
+	line-height: 18px;
+	vertical-align: middle;
+	font-size: 14px;
+}
+.help-text{ 
+	color: #000; 
+
+	-moz-transform: scale(1, -1);
+	-webkit-transform: scale(1, -1);
+	-o-transform: scale(1, -1);
+	-ms-transform: scale(1, -1);
+	transform: scale(1, -1);
+
+	display: inline-block;
+}
+.help svg { 
+	fill: #555; 
+	display: inline-block; 
+	line-height: 18px; 
+	vertical-align: middle;
+	padding-right: 10px;
+}
